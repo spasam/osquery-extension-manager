@@ -1,0 +1,31 @@
+{
+  "env": {
+    "node": true,
+    "es6": true,
+    "mocha": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2018
+  },
+  "rules": {
+    "complexity": ["error", { "max": 40 }],
+    "eqeqeq": "error",
+    "linebreak-style": ["error", "unix"],
+    "no-else-return": "error",
+    "no-eq-null": "error",
+    "no-trailing-spaces": ["error", { "ignoreComments": true }],
+    "no-unsafe-negation": "error",
+    //"no-unused-vars": "error",
+    "no-var": "error",
+    "quote-props": ["error", "as-needed"],
+    "quotes": [
+      "error",
+      "single",
+      {
+        "avoidEscape": true
+      }
+    ],
+    "semi": ["error", "always"],
+    "strict": ["error", "global"]
+  }
+}

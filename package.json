@@ -1,0 +1,29 @@
+{
+  "name": "osquery-extension-manager",
+  "version": "1.0.0",
+  "description": "Osquery extension manager",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "lint": "eslint --max-warnings 0 . ",
+    "lintfix": "eslint --fix .",
+    "thrift": "thrift --gen js:node: js:es6 -o lib thrift/osquery.thrift",
+    "sample": "node examples/sample-table.js"
+  },
+  "keywords": [
+    "osquery",
+    "extension",
+    "nodejs",
+    "javascript"
+  ],
+  "author": "Seshu Pasam",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "thrift": "^0.13.0-hotfix.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.14.0"
+  }
+}
