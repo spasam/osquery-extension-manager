@@ -1,29 +1,48 @@
 {
   "name": "osquery-extension-manager",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Osquery extension manager",
+  "author": "Seshu Pasam",
+  "license": "Apache-2.0",
   "main": "index.js",
   "directories": {
     "lib": "lib"
   },
+  "dependencies": {
+    "thrift": "^0.13.0-hotfix.1"
+  },
+  "devDependencies": {
+    "@aws-sdk/client-ec2": "^3.0.0",
+    "change-case": "^4.1.2",
+    "eslint": "^7.14.0",
+    "husky": "^4.3.0",
+    "lint-staged": "^10.5.2",
+    "prettier": "^1.19.1"
+  },
   "scripts": {
     "lint": "eslint --max-warnings 0 . ",
     "lintfix": "eslint --fix .",
+    "precommit": "lint-staged",
+    "prettier": "prettier --write '**/*.js'",
     "thrift": "thrift --gen js:node: js:es6 -o lib thrift/osquery.thrift",
-    "sample": "node examples/sample-table.js"
+    "sample-table": "node examples/sample-table.js",
+    "aws-ec2-tables": "node examples/aws-ec2-tables.js"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "eslint"
+    ]
   },
   "keywords": [
     "osquery",
     "extension",
     "nodejs",
     "javascript"
-  ],
-  "author": "Seshu Pasam",
-  "license": "Apache-2.0",
-  "dependencies": {
-    "thrift": "^0.13.0-hotfix.1"
-  },
-  "devDependencies": {
-    "eslint": "^7.14.0"
-  }
+  ]
 }

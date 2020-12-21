@@ -19,16 +19,27 @@
 
 'use strict';
 
-const { start, stop, listExtensions, getFlags, query, getQueryColumns } = require('..');
+const { snakeCase } = require('change-case');
 
-(async function() {
-  await start();
+module.exports = function(obj) {
+  const row = {};
 
-  console.log('Extensions: ' + JSON.stringify(await listExtensions(), 0, 2));
-  console.log('Flags: ' + JSON.stringify(await getFlags(), 0, 2));
-  console.log('Query: ' + JSON.stringify(await query('SELECT * FROM uptime'), 0, 2));
-  console.log('Table columns: ' + JSON.stringify(await getQueryColumns('SELECT * FROM uptime'), 0, 2));
+  for (let [key, value] of Object.entries(obj)) {
+    if (value === undefined) {
+      continue;
+    }
 
-  stop();
-  process.exit(0);
-})();
+    key = snakeCase(key);
+    const type = typeof value;
+    if (type === 'string') {
+      row[key] = value;
+    } else if (type === 'boolean') {
+      row[key] = value ? '1' : '0';
+    } else if (type === 'object') {
+      row[key] = JSON.stringify(value);
+    } else {
+      row[key] = '' + value;
+    }
+  }
+  return row;
+};

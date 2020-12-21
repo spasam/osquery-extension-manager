@@ -20,23 +20,15 @@
 'use strict';
 
 const { TablePlugin } = require('./lib/plugin');
-const {
-  addPlugin,
-  start,
-  stop,
-  listExtensions,
-  getFlags,
-  query,
-  getQueryColumns,
-} = require('./lib/manager');
+const { addPlugins, start, stop, listExtensions, getFlags, query, getQueryColumns } = require('./lib/manager');
 
 module.exports = {
   TablePlugin,
-  addPlugin,
+  addPlugins,
   start,
   stop,
   listExtensions,
   getFlags,
   query,
-  getQueryColumns,
+  getQueryColumns
 };

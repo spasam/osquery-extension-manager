@@ -19,17 +19,17 @@
 
 'use strict';
 
-const { TablePlugin, addPlugin, start, stop } = require('..');
+const { TablePlugin, addPlugins, start, stop } = require('..');
 
 class SampleTablePlugin extends TablePlugin {
   constructor() {
-    super('sample', {foo: 'TEXT', bar: 'INTEGER'});
+    super('sample', { foo: 'TEXT', bar: 'INTEGER' });
   }
 
-  generate() {
+  async generate() {
     return [
-      {foo: 'Hello', bar: '1'},
-      {foo: 'World', bar: '2'}
+      { foo: 'Hello', bar: '1' },
+      { foo: 'World', bar: '2' }
     ];
   }
 }
@@ -40,6 +40,6 @@ process.on('SIGINT', function() {
 });
 
 (async function() {
-  addPlugin(new SampleTablePlugin());
+  addPlugins(new SampleTablePlugin());
   await start();
 })();
