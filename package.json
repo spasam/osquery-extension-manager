@@ -1,9 +1,15 @@
 {
   "name": "osquery-extension-manager",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Osquery extension manager",
   "author": "Seshu Pasam",
   "license": "Apache-2.0",
+  "homepage": "https://github.com/spasam/osquery-extension-manager/blob/master/README.md",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/spasam/osquery-extension-manager.git"
+  },
+  "bugs": "https://github.com/spasam/osquery-extension-manager/issues",
   "main": "index.js",
   "directories": {
     "lib": "lib"
