@@ -31,7 +31,7 @@
     "lintfix": "eslint --fix .",
     "precommit": "lint-staged",
     "prettier": "prettier --write '**/*.js'",
-    "thrift": "thrift --gen js:node: js:es6 -o lib thrift/osquery.thrift",
+    "thrift": "thrift --gen js:node,es6 -o lib thrift/osquery.thrift",
     "sample-table": "node examples/sample-table.js",
     "aws-ec2-tables": "node examples/aws-ec2-tables.js"
   },

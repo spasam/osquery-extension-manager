@@ -19,7 +19,7 @@
 
 'use strict';
 
-const { TablePlugin, addPlugins, start, stop } = require('..');
+const { TablePlugin, addPlugins, start, stop, streamEvents } = require('..');
 
 class SampleTablePlugin extends TablePlugin {
   constructor() {
@@ -34,6 +34,25 @@ class SampleTablePlugin extends TablePlugin {
   }
 }
 
+class SampleEventsTablePlugin extends TablePlugin {
+  constructor() {
+    super('sample_events', { time: 'BIGINT', foo: 'TEXT', bar: 'INTEGER' });
+
+    let counter = 1;
+    setInterval(async function() {
+      // Return ignored
+      await streamEvents('sample_events', [
+        { foo: 'Hello', bar: '' + counter++ },
+        { foo: 'World', bar: '' + counter++ }
+      ]);
+    }, 2000);
+  }
+
+  async generate() {
+    return [];
+  }
+}
+
 process.on('SIGINT', function() {
   stop();
   process.exit();
@@ -41,5 +60,6 @@ process.on('SIGINT', function() {
 
 (async function() {
   addPlugins(new SampleTablePlugin());
+  addPlugins(new SampleEventsTablePlugin());
   await start();
 })();
