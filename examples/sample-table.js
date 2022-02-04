@@ -34,12 +34,12 @@ class SampleTablePlugin extends TablePlugin {
   }
 }
 
-process.on('SIGINT', function() {
+process.on('SIGINT', function () {
   stop();
   process.exit();
 });
 
-(async function() {
+(async function () {
   addPlugins(new SampleTablePlugin());
   await start();
 })();

@@ -55,12 +55,12 @@ class AWSEc2Plugin extends TablePlugin {
   }
 }
 
-process.on('SIGINT', function() {
+process.on('SIGINT', function () {
   stop();
   process.exit();
 });
 
-(async function() {
+(async function () {
   const client = new EC2.EC2Client('us-east-1'); // TODO FIXME XXX
 
   // prettier-ignore

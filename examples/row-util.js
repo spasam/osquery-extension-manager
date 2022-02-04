@@ -21,7 +21,7 @@
 
 const { snakeCase } = require('change-case');
 
-module.exports = function(obj) {
+module.exports = function (obj) {
   const row = {};
 
   for (let [key, value] of Object.entries(obj)) {

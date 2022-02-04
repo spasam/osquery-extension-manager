@@ -21,7 +21,7 @@
 
 const { start, stop, listExtensions, getFlags, query, getQueryColumns } = require('..');
 
-(async function() {
+(async function () {
   await start();
 
   console.log('Extensions: ' + JSON.stringify(await listExtensions(), 0, 2));

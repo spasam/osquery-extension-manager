@@ -7,6 +7,7 @@
 
 namespace cpp osquery.extensions
 namespace py osquery.extensions
+namespace rb osquery.extensions
 
 /// Registry operations use a registry name, plugin name, request/response.
 typedef map<string, string> ExtensionPluginRequest
@@ -101,4 +102,13 @@ service ExtensionManager extends Extension {
   ExtensionResponse getQueryColumns(
     1:string sql,
   ),
+  /// Stream batch of events for a events table.
+  ExtensionStatus streamEvents(
+    /// The name of the events table.
+    1:string name,
+    /// Batch of events for the event table.
+    2:ExtensionPluginResponse events,
+  ),
+  /// Return the TLS node key.
+  string getNodeKey(),
 }
